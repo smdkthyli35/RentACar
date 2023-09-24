@@ -18,10 +18,14 @@ namespace Persistence
         {
             services.AddDbContext<BaseDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("nArchitecture"));
+                options.UseSqlServer(configuration.GetConnectionString("RentACar"));
             });
 
             services.AddScoped<IBrandRepository, BrandRepository>();
+            services.AddScoped<ICarRepository, CarRepository>();
+            services.AddScoped<IFuelRepository, FuelRepository>();
+            services.AddScoped<IModelRepository, ModelRepository>();
+            services.AddScoped<ITransmissionRepository, TransmissionRepository>();
 
             return services;
         }
