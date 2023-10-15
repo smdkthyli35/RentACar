@@ -1,4 +1,5 @@
-﻿using Core.Application.Pipelines.Transaction;
+﻿using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
 using Core.Application.Rules;
 using FluentValidation;
@@ -16,6 +17,7 @@ namespace Application
                 configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
                 configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
                 configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
+                configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
             });
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
